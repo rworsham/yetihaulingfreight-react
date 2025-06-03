@@ -10,6 +10,7 @@ import {
     useTheme,
     useMediaQuery,
 } from '@mui/material';
+import '@fontsource/permanent-marker';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 const services = [
@@ -45,11 +46,24 @@ const LandingPage = () => {
 
     return (
         <Box sx={{ width: '100%' }}>
+
+            <Typography
+                variant="h1"
+                align="center"
+                sx={{
+                    fontFamily: '"Permanent Marker", cursive',
+                    color: theme.palette.secondary.main,
+                    mb: 4,
+                }}
+            >
+                Yeti Hauling Freight
+            </Typography>
+
             <Box
                 sx={{
                     mb: 6,
                     textAlign: 'center',
-                    p: 4,
+                    py: 6,
                     borderRadius: 2,
                     background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.accent2.main})`,
                     color: 'white',
@@ -65,42 +79,58 @@ const LandingPage = () => {
                 </Typography>
                 <Typography
                     variant={isSmallScreen ? 'body2' : 'body1'}
-                    sx={{ mb: 3, color: 'white', fontWeight: 500 }}
+                    sx={{ mb: 3, color: theme.palette.text.primary, fontWeight: 500 }}
                 >
                     Serving your heavy haul needs with speed, safety, and precision.
                 </Typography>
-                <Button variant="contained" color="secondary" size={isSmallScreen ? 'medium' : 'large'}>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    size={isSmallScreen ? 'medium' : 'large'}
+                >
                     Request a Quote
                 </Button>
             </Box>
 
             <Box sx={{ mb: 6 }}>
                 <Typography
-                    variant="h5"
+                    variant="h4"
                     align="center"
                     gutterBottom
-                    sx={{ mb: 3, color: 'white', fontWeight: '600' }}
+                    sx={{
+                        fontFamily: '"Permanent Marker", cursive',
+                        fontWeight: 600,
+                        color: theme.palette.accent1.main,
+                        mb: 4,
+                    }}
                 >
                     Our Services
                 </Typography>
-                <Grid container spacing={3}>
+
+                <Grid
+                    container
+                    spacing={{ xs: 2, md: 3 }}
+                    columns={{ xs: 4, sm: 8, md: 12 }}
+                >
                     {services.map((service, idx) => (
-                        <Grid item xs={12} sm={6} key={idx} sx={{ display: 'flex' }}>
+                        <Grid
+                            item
+                            key={idx}
+                            size={{ xs: 4, sm: 4, md: 4 }}
+                            sx={{ display: 'flex' }}
+                        >
                             <Card
                                 sx={{
                                     bgcolor: theme.palette.background.paper,
                                     borderLeft: `5px solid ${theme.palette.accent1.main}`,
-                                    width: '100%',
+                                    boxShadow: theme.shadows[3],
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    px: 3,
-                                    py: 3,
-                                    boxShadow: theme.shadows[3],
+                                    width: '100%',
                                 }}
                                 elevation={3}
                             >
-                                <CardContent sx={{ padding: 0 }}>
+                                <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                                     <Typography
                                         variant="subtitle1"
                                         gutterBottom
@@ -108,7 +138,11 @@ const LandingPage = () => {
                                     >
                                         {service.title}
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.5 }}>
+                                    <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                        sx={{ mt: 'auto' }}
+                                    >
                                         {service.description}
                                     </Typography>
                                 </CardContent>
@@ -118,50 +152,57 @@ const LandingPage = () => {
                 </Grid>
             </Box>
 
-            <Box
-                sx={{
-                    mb: 6,
-                    textAlign: 'center',
-                    px: { xs: 2, sm: 0 },
-                }}
-            >
+            <Box sx={{ mb: 6, textAlign: 'center' }}>
                 <Typography
-                    variant="h5"
+                    variant="h4"
                     gutterBottom
-                    sx={{ color: theme.palette.accent1.main, fontWeight: '600' }}
+                    sx={{
+                        fontFamily: '"Permanent Marker", cursive',
+                        fontWeight: 600,
+                        color: theme.palette.accent1.main,
+                    }}
                 >
                     About Us
                 </Typography>
                 <Typography
                     variant={isSmallScreen ? 'body2' : 'body1'}
-                    sx={{ maxWidth: 600, mx: 'auto', color: 'white' }}
+                    sx={{ maxWidth: 600, mx: 'auto', color: theme.palette.text.primary }}
                 >
                     We’re a family-owned flatbed trucking company specializing in heavy-duty hauling. With years of experience,
-                    we provide safe and timely delivery of equipment, materials, and more throughout the Southeast.
+                    we provide safe and timely delivery of equipment, materials, and more throughout the East Coast.
                 </Typography>
             </Box>
 
             <Box sx={{ textAlign: 'center' }}>
-                <Paper elevation={3} sx={{ p: 3 }}>
+                <Paper
+                    elevation={3}
+                    sx={{
+                        p: { xs: 3, sm: 4 },
+                        bgcolor: theme.palette.background.paper,
+                        color: theme.palette.text.primary,
+                        mx: 'auto',
+                        width: '100%',
+                        maxWidth: 600,
+                    }}
+                >
                     <Typography variant="h6" gutterBottom sx={{ fontWeight: '600' }}>
                         Need a Flatbed Hauler?
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ mb: 2 }}
+                    >
                         Contact us today for a free quote or to schedule your next delivery.
                     </Typography>
                     <Button
                         variant="contained"
+                        color="secondary"
                         startIcon={<LocalShippingIcon />}
-                        sx={{
-                            backgroundColor: theme.palette.primary.main,
-                            '&:hover': {
-                                backgroundColor: theme.palette.accent2.main,
-                            },
-                        }}
                         fullWidth={isSmallScreen}
                         size={isSmallScreen ? 'medium' : 'large'}
                     >
-                        Get in Touch
+                        Get in Touch!
                     </Button>
                 </Paper>
             </Box>

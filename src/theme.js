@@ -25,8 +25,13 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    },
+        h1: {
+            fontFamily: '"Permanent Marker", sans-serif',
+        },
+        h2: {
+            fontFamily: '"Permanent Marker", sans-serif',
+        },
+    }
 });
 
 export default theme;
