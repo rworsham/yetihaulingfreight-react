@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import '@fontsource/permanent-marker';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import Slideshow from './Slideshow';
 
 const services = [
     {
@@ -52,7 +53,7 @@ const LandingPage = () => {
                 align="center"
                 sx={{
                     fontFamily: '"Permanent Marker", cursive',
-                    color: theme.palette.secondary.main,
+                    color: theme.palette.accent1.main,
                     mb: 4,
                 }}
             >
@@ -91,6 +92,8 @@ const LandingPage = () => {
                     Request a Quote
                 </Button>
             </Box>
+
+            <Slideshow />
 
             <Box sx={{ mb: 6 }}>
                 <Typography
