@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Box,
     Button,
@@ -13,6 +13,7 @@ import {
 import '@fontsource/permanent-marker';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Slideshow from './Slideshow';
+import QuoteForm from '../forms/QuoteForm.jsx'
 
 const services = [
     {
@@ -43,6 +44,7 @@ const services = [
 
 const LandingPage = () => {
     const theme = useTheme();
+    const [quoteOpen, setQuoteOpen] = useState(false);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
@@ -88,9 +90,13 @@ const LandingPage = () => {
                     variant="contained"
                     color="secondary"
                     size={isSmallScreen ? 'medium' : 'large'}
+                    onClick={() => setQuoteOpen(true)}
                 >
                     Request a Quote
                 </Button>
+
+                <QuoteForm open={quoteOpen} onClose={() => setQuoteOpen(false)} />
+
             </Box>
 
             <Slideshow />

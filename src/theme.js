@@ -1,4 +1,4 @@
-import {createTheme} from "@mui/material";
+import { createTheme } from "@mui/material";
 
 const theme = createTheme({
     palette: {
@@ -31,7 +31,21 @@ const theme = createTheme({
         h2: {
             fontFamily: '"Permanent Marker", sans-serif',
         },
-    }
+    },
+    components: {
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    '&:hover': {
+                        backgroundColor: 'transparent',
+                        '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: theme.palette.accent1.main,
+                        },
+                    },
+                }),
+            },
+        },
+    },
 });
 
 export default theme;
