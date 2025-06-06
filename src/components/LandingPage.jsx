@@ -14,6 +14,7 @@ import '@fontsource/permanent-marker';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Slideshow from './Slideshow';
 import QuoteForm from '../forms/QuoteForm.jsx'
+import ContactForm from "../forms/ContactForm.jsx";
 
 const services = [
     {
@@ -45,6 +46,7 @@ const services = [
 const LandingPage = () => {
     const theme = useTheme();
     const [quoteOpen, setQuoteOpen] = useState(false);
+    const [contactOpen, setContactOpen] = useState(false);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
@@ -210,9 +212,13 @@ const LandingPage = () => {
                         startIcon={<LocalShippingIcon />}
                         fullWidth={isSmallScreen}
                         size={isSmallScreen ? 'medium' : 'large'}
+                        onClick={() => {setContactOpen(true)}}
                     >
                         Get in Touch!
                     </Button>
+
+                    <ContactForm open={contactOpen} onClose={() => setContactOpen(false)} />
+
                 </Paper>
             </Box>
         </Box>
