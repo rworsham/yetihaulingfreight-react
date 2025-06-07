@@ -15,6 +15,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Slideshow from './Slideshow';
 import QuoteForm from '../forms/QuoteForm.jsx'
 import ContactForm from "../forms/ContactForm.jsx";
+import YetiSvg from "../assets/yeti.svg"
 
 const services = [
     {
@@ -51,55 +52,83 @@ const LandingPage = () => {
 
     return (
         <Box sx={{ width: '100%' }}>
-
-            <Typography
-                variant="h1"
-                align="center"
-                sx={{
-                    fontFamily: '"Permanent Marker", cursive',
-                    color: theme.palette.accent1.main,
-                    mb: 4,
-                }}
-            >
-                Yeti Hauling Freight
-            </Typography>
-
             <Box
                 sx={{
+                    position: 'relative',
                     mb: 6,
-                    textAlign: 'center',
-                    py: 6,
-                    borderRadius: 2,
-                    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.accent2.main})`,
-                    color: 'white',
-                    boxShadow: theme.shadows[4],
+                    py: 4,
+                    overflow: 'visible',
                 }}
             >
-                <Typography
-                    variant={isSmallScreen ? 'h4' : 'h3'}
-                    gutterBottom
-                    sx={{ fontWeight: 'bold', color: theme.palette.accent1.main }}
-                >
-                    Dependable Flatbed Trucking
-                </Typography>
-                <Typography
-                    variant={isSmallScreen ? 'body2' : 'body1'}
-                    sx={{ mb: 3, color: theme.palette.text.primary, fontWeight: 500 }}
-                >
-                    Serving your heavy haul needs with speed, safety, and precision.
-                </Typography>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    size={isSmallScreen ? 'medium' : 'large'}
-                    onClick={() => setQuoteOpen(true)}
-                >
-                    Request a Quote
-                </Button>
+                <img
+                    src={YetiSvg}
+                    alt="yeti background"
+                    style={{
+                        position: 'absolute',
+                        bottom: isSmallScreen ? '33%' : '-40%',
+                        left: '50%',
+                        transform: 'translate(-50%, 0)',
+                        width: isSmallScreen ? '200px' : '400px',
+                        height: 'auto',
+                        opacity: 0.5,
+                        pointerEvents: 'none',
+                        zIndex: 0,
+                        userSelect: 'none',
+                    }}
+                />
 
-                <QuoteForm open={quoteOpen} onClose={() => setQuoteOpen(false)} />
+                <Typography
+                    variant={isSmallScreen ? 'h3' : 'h1'}
+                    align="center"
+                    sx={{
+                        fontFamily: '"Permanent Marker", cursive',
+                        color: theme.palette.accent1.main,
+                        position: 'relative',
+                        zIndex: 1,
+                        mb: 4,
+                    }}
+                >
+                    Yeti Hauling Freight
+                </Typography>
 
+                <Box
+                    sx={{
+                        textAlign: 'center',
+                        py: 6,
+                        borderRadius: 2,
+                        background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.accent2.main})`,
+                        color: 'white',
+                        boxShadow: theme.shadows[4],
+                        position: 'relative',
+                        zIndex: 1,
+                    }}
+                >
+                    <Typography
+                        variant={isSmallScreen ? 'h4' : 'h3'}
+                        gutterBottom
+                        sx={{ fontWeight: 'bold', color: theme.palette.accent1.main }}
+                    >
+                        Dependable Flatbed Trucking
+                    </Typography>
+                    <Typography
+                        variant={isSmallScreen ? 'body2' : 'body1'}
+                        sx={{ mb: 3, color: theme.palette.text.primary, fontWeight: 500 }}
+                    >
+                        Serving your heavy haul needs with speed, safety, and precision.
+                    </Typography>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        size={isSmallScreen ? 'medium' : 'large'}
+                        onClick={() => setQuoteOpen(true)}
+                    >
+                        Request a Quote
+                    </Button>
+
+                    <QuoteForm open={quoteOpen} onClose={() => setQuoteOpen(false)} />
+                </Box>
             </Box>
+
 
             <Slideshow />
 
