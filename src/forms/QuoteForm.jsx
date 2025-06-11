@@ -69,8 +69,8 @@ const QuoteModal = ({ open, onClose }) => {
             showError('Please enter a valid email address');
             return false;
         }
-        if (phoneNumber && !/^\d{7,15}$/.test(phoneNumber)) {
-            showError('Please enter a valid phone number (digits only)');
+        if (phoneNumber && !/^(\d-?){8}\d$/.test(phoneNumber)) {
+            showError('Please enter a valid phone number (must contain exactly 9 digits, hyphens allowed)');
             return false;
         }
         return true;

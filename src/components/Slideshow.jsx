@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Box } from '@mui/material';
 
-//These are just temp images
 const images = [
     '/images/slide1.jpg',
     '/images/slide2.jpg',
@@ -15,16 +14,18 @@ const Slideshow = () => {
 
     useEffect(() => {
         const container = scrollRef.current;
-        const scrollAmount = 1;
+        const scrollSpeed = 0.5;
         let animationFrame;
 
         const autoScroll = () => {
             if (!isPaused && container) {
-                container.scrollLeft += scrollAmount;
+                container.scrollLeft += scrollSpeed;
 
-                const totalWidth = container.scrollWidth / 2;
-                if (container.scrollLeft >= totalWidth) {
-                    container.scrollLeft = 0;
+                const scrollWidth = container.scrollWidth;
+                const totalScrollable = scrollWidth / 2;
+
+                if (container.scrollLeft >= totalScrollable) {
+                    container.scrollLeft -= totalScrollable;
                 }
             }
 
@@ -32,7 +33,6 @@ const Slideshow = () => {
         };
 
         animationFrame = requestAnimationFrame(autoScroll);
-
         return () => cancelAnimationFrame(animationFrame);
     }, [isPaused]);
 
@@ -54,9 +54,7 @@ const Slideshow = () => {
                 width: '100vw',
                 position: 'relative',
                 left: '50%',
-                right: '50%',
                 marginLeft: '-50vw',
-                marginRight: '-50vw',
                 overflowX: 'scroll',
                 display: 'flex',
                 whiteSpace: 'nowrap',
@@ -78,13 +76,14 @@ const Slideshow = () => {
                     alt={`slide-${index}`}
                     sx={{
                         height: '100%',
-                        width: '100%',
+                        width: '100vw',
                         objectFit: 'cover',
                         flexShrink: 0,
-                        ml: index === 0 ? 0 : 1,
-                        mr: index === images.length * 2 - 1 ? 0 : 1,
-                        borderRadius: 2,
+                        display: 'block',
+                        userSelect: 'none',
+                        pointerEvents: 'none',
                     }}
+                    draggable={false}
                 />
             ))}
         </Box>
