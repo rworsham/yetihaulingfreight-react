@@ -78,7 +78,7 @@ const LandingPage = () => {
                 />
 
                 <Typography
-                    variant={isSmallScreen ? 'h3' : 'h1'}
+                    variant={isSmallScreen ? 'h2' : 'h1'}
                     align="center"
                     sx={{
                         fontFamily: '"Permanent Marker", cursive',
@@ -134,7 +134,7 @@ const LandingPage = () => {
 
             <Box sx={{ mb: 6 }}>
                 <Typography
-                    variant="h4"
+                    variant="h3"
                     align="center"
                     gutterBottom
                     sx={{
@@ -192,9 +192,41 @@ const LandingPage = () => {
                 </Grid>
             </Box>
 
+            <Box sx={{ mb: 6 }}>
+                <Typography variant="h3" align="center" sx={{ fontFamily: '"Permanent Marker", cursive', color: theme.palette.accent1.main }}>
+                    What Our Customers Say
+                </Typography>
+                <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card elevation={2}>
+                            <CardContent>
+                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
+                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card elevation={2}>
+                            <CardContent>
+                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
+                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card elevation={2}>
+                            <CardContent>
+                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
+                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Box>
+
             <Box sx={{ mb: 6, textAlign: 'center' }}>
                 <Typography
-                    variant="h4"
+                    variant="h3"
                     gutterBottom
                     sx={{
                         fontFamily: '"Permanent Marker", cursive',
@@ -242,6 +274,7 @@ const LandingPage = () => {
                         fullWidth={isSmallScreen}
                         size={isSmallScreen ? 'medium' : 'large'}
                         onClick={() => {setContactOpen(true)}}
+                        sx={{ mb: 2 }}
                     >
                         Get in Touch!
                     </Button>

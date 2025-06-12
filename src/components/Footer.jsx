@@ -42,6 +42,7 @@ const Footer = () => {
                 disableSwipeToOpen={false}
                 ModalProps={{ disableScrollLock: true }}
                 PaperProps={{
+                    elevation: 0,
                     sx: {
                         backgroundColor: theme.palette.primary.main,
                         borderTopLeftRadius: 16,
@@ -90,7 +91,7 @@ const Footer = () => {
                                     justifyContent: 'center',
                                     color: theme.palette.secondary.main,
                                     '&:hover': {
-                                        backgroundColor: theme.palette.background.paper,
+                                        backgroundColor: theme.palette.accent1.main,
                                     },
                                 }}
                             >
