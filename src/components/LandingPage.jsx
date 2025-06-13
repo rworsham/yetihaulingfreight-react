@@ -192,6 +192,65 @@ const LandingPage = () => {
                 </Grid>
             </Box>
 
+            <Box sx={{ py: 6, px: 2 }}>
+                <Typography
+                    variant="h3"
+                    align="center"
+                    gutterBottom
+                    sx={{
+                        fontFamily: '"Permanent Marker", cursive',
+                        color: theme.palette.accent1.main,
+                        fontWeight: 'bold',
+                        mb: 4,
+                    }}
+                >
+                    Proudly Serving the East Coast
+                </Typography>
+
+                <Grid
+                    container
+                    spacing={4}
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <Grid item xs={12} md={6}>
+                        <Box sx={{ px: { md: 4 }, textAlign: { xs: 'center', md: 'left' } }}>
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' },
+                                    color: theme.palette.text.primary,
+                                    lineHeight: 1.9,
+                                    maxWidth: 540,
+                                    mx: { xs: 'auto', md: 0 },
+                                }}
+                            >
+                                From bustling ports to remote job sites, Yeti Hauling covers the entire East Coast with
+                                unmatched reliability and dedication. Whether you're moving construction materials,
+                                oversized loads, or specialized equipment, our experienced team ensures your freight
+                                arrives safely and on schedule. Trust the cold-blooded pros for hotshot deliveries and
+                                long hauls alike.
+                            </Typography>
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <Box
+                            component="img"
+                            src={'/images/service-map.png'}
+                            alt="Yeti truck hauling on East Coast"
+                            sx={{
+                                display: 'block',
+                                maxWidth: '100%',
+                                maxHeight: 600,
+                                objectFit: 'contain',
+                                mx: 'auto',
+                            }}
+                        />
+                    </Grid>
+                </Grid>
+            </Box>
+
             <Box sx={{ mb: 6 }}>
                 <Typography variant="h3" align="center" sx={{ fontFamily: '"Permanent Marker", cursive', color: theme.palette.accent1.main }}>
                     What Our Customers Say
@@ -237,8 +296,7 @@ const LandingPage = () => {
                     About Us
                 </Typography>
                 <Typography
-                    variant={isSmallScreen ? 'body2' : 'body1'}
-                    sx={{ maxWidth: 600, mx: 'auto', color: theme.palette.text.primary }}
+                    sx={{ maxWidth: 600, mx: 'auto', color: theme.palette.text.primary, fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' }, }}
                 >
                     We’re a family-owned flatbed trucking company specializing in heavy-duty hauling. With years of experience,
                     we provide safe and timely delivery of equipment, materials, and more throughout the East Coast.
