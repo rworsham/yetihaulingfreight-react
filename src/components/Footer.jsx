@@ -80,7 +80,7 @@ const Footer = () => {
                             { text: 'Home', to: '/' },
                             { text: 'Contact', to: '/contact' },
                             { text: 'Privacy Policy', to: '/privacy' },
-                            { text: 'Terms and Conditions', to: '/terms' },
+                            { text: 'Terms and Conditions', to: '/terms-and-conditions' },
                         ].map((item, idx) => (
                             <ListItem
                                 key={idx}
