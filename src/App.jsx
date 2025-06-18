@@ -10,20 +10,22 @@ import LandingPage from "./components/LandingPage.jsx"
 import NotFound from "./components/404NotFound.jsx";
 import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
 import TermsAndConditions from "./components/TermsAndConditions.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
 
 function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
                 <AlertProvider>
-                    <Layout>
-                        <Routes>
+                    <Routes>
+                        <Route element={<Layout />}>
                             <Route path="/" element={<LandingPage />} />
+                            <Route path="/admin/login" element={<AdminLogin />} />
                             <Route path="/privacy" element={<PrivacyPolicy />} />
                             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                             <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </Layout>
+                        </Route>
+                    </Routes>
                 </AlertProvider>
         </ThemeProvider>
     );

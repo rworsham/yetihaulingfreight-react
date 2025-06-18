@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, useTheme } from '@mui/material';
+import { Outlet } from 'react-router-dom';
 import Footer from './Footer.jsx';
 
-const Layout = ({ children }) => {
+const Layout = () => {
     const theme = useTheme();
 
     return (
@@ -23,7 +24,7 @@ const Layout = ({ children }) => {
                     color: theme.palette.text.primary,
                 }}
             >
-                {children}
+                <Outlet />
             </Box>
             <Footer />
         </Box>
