@@ -4,7 +4,12 @@ import {
     Button,
     TextField,
     Typography,
-    CircularProgress, useTheme, useMediaQuery,
+    CircularProgress,
+    useTheme,
+    useMediaQuery,
+    FormControl,
+    FormLabel,
+    FormGroup,
 } from '@mui/material';
 import { AuthContext } from "../context/AuthContext.jsx";
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
@@ -13,20 +18,20 @@ import YetiSvg from "../assets/yeti.svg";
 
 const AdminLogin = () => {
     const { loginUser } = useContext(AuthContext);
+    const { showError } = useAlert();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const { executeRecaptcha } = useGoogleReCaptcha();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const { showError } = useAlert();
 
     const validateForm = () => {
         if (!username || !password) {
             showError("Username and Password are required");
             return false;
         }
-
         return true;
     };
 
@@ -43,7 +48,6 @@ const AdminLogin = () => {
 
         try {
             const token = await executeRecaptcha('admin_login_form_submit');
-
             await loginUser({ username, password, captchaToken: token });
         } catch (error) {
             console.error(error);
@@ -57,13 +61,11 @@ const AdminLogin = () => {
         <Box
             sx={{
                 position: 'relative',
-                minHeight: '100vh',
+                minHeight: '90dvh',
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'flex-start',
-                pt: 8,
-                pb: 10,
+                alignItems: 'center',
                 px: 2,
                 overflow: 'hidden',
             }}
@@ -74,7 +76,7 @@ const AdminLogin = () => {
                 alt="yeti background"
                 sx={{
                     position: 'absolute',
-                    bottom: isSmallScreen ? '25%' : '+10%',
+                    bottom: isSmallScreen ? '5%' : '-45%',
                     left: '50%',
                     transform: 'translateX(-50%)',
                     width: isSmallScreen ? '400px' : '700px',
@@ -82,54 +84,61 @@ const AdminLogin = () => {
                     zIndex: 0,
                     pointerEvents: 'none',
                     userSelect: 'none',
+                    overflow: 'hidden',
                 }}
             />
-                <Typography variant="h5" mb={2} align="center">
-                    Login
+
+            <Box
+                sx={{
+                    width: '100%',
+                    maxWidth: 400,
+                    zIndex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Typography variant="h5" mb={2} align="center" fontWeight={600}>
+                    Admin Login
                 </Typography>
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: 3,
-                        width: '100%',
-                        mt: 4
-                    }}
-                >
-                    <TextField
-                        label="Username"
-                        variant="outlined"
-                        fullWidth
-                        required
-                        margin="normal"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <TextField
-                        label="Password"
-                        variant="outlined"
-                        fullWidth
-                        required
-                        margin="normal"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+
+                <FormGroup component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+                    <FormControl fullWidth sx={{ mb: 2 }}>
+                        <FormLabel htmlFor="username">Username</FormLabel>
+                        <TextField
+                            id="username"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            autoComplete="username"
+                        />
+                    </FormControl>
+
+                    <FormControl fullWidth sx={{ mb: 2 }}>
+                        <FormLabel htmlFor="password">Password</FormLabel>
+                        <TextField
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            autoComplete="current-password"
+                        />
+                    </FormControl>
+
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         disabled={isSubmitting}
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 1 }}
                     >
                         {isSubmitting ? <CircularProgress size={24} color="inherit" /> : 'Login'}
                     </Button>
-                </Box>
+                </FormGroup>
+            </Box>
         </Box>
     );
 };
