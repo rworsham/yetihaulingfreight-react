@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Box } from '@mui/material';
 
 const images = [
-    '/images/slide1.jpg',
-    '/images/slide2.jpg',
-    '/images/slide3.jpg',
+    '/images/1000004099.jpg',
+    '/images/1000004101.jpg',
+    '/images/1000004100.jpg',
+    '/images/1000004102.jpg',
 ];
 
 const Slideshow = () => {
