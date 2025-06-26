@@ -122,7 +122,7 @@ const LandingPage = () => {
                         size={isSmallScreen ? 'medium' : 'large'}
                         onClick={() => setQuoteOpen(true)}
                     >
-                        Request a Quote
+                        Request a Quote!
                     </Button>
 
                     <QuoteForm open={quoteOpen} onClose={() => setQuoteOpen(false)} />
@@ -146,6 +146,16 @@ const LandingPage = () => {
                 >
                     Our Services
                 </Typography>
+
+                <Box
+                    sx={{
+                        width: '75%',
+                        height: '4px',
+                        backgroundColor: theme.palette.accent1.main,
+                        margin: '16px auto',
+                        borderRadius: '2px',
+                    }}
+                />
 
                 <Grid
                     container
@@ -207,6 +217,16 @@ const LandingPage = () => {
                     Proudly Serving the East Coast
                 </Typography>
 
+                <Box
+                    sx={{
+                        width: '75%',
+                        height: '4px',
+                        backgroundColor: theme.palette.accent1.main,
+                        margin: '16px auto',
+                        borderRadius: '2px',
+                    }}
+                />
+
                 <Grid
                     container
                     spacing={4}
@@ -255,6 +275,15 @@ const LandingPage = () => {
                 <Typography variant="h3" align="center" sx={{ fontFamily: '"Permanent Marker", cursive', color: theme.palette.accent1.main }}>
                     What Our Customers Say
                 </Typography>
+                <Box
+                    sx={{
+                        width: '75%',
+                        height: '4px',
+                        backgroundColor: theme.palette.accent1.main,
+                        margin: '16px auto',
+                        borderRadius: '2px',
+                    }}
+                />
                 <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
                     <Grid item xs={12} sm={6} md={4}>
                         <Card elevation={2}>
@@ -295,6 +324,15 @@ const LandingPage = () => {
                 >
                     About Us
                 </Typography>
+                <Box
+                    sx={{
+                        width: '75%',
+                        height: '4px',
+                        backgroundColor: theme.palette.accent1.main,
+                        margin: '16px auto',
+                        borderRadius: '2px',
+                    }}
+                />
                 <Typography
                     sx={{ maxWidth: 600, mx: 'auto', color: theme.palette.text.primary, fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' }, }}
                 >

@@ -11,6 +11,7 @@ import NotFound from "./components/404NotFound.jsx";
 import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
 import TermsAndConditions from "./components/TermsAndConditions.jsx";
 import AdminLogin from "./components/AdminLogin.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route element={<Layout />}>
                             <Route path="/" element={<LandingPage />} />
                             <Route path="/admin/login" element={<AdminLogin />} />
+                            <Route path="/admin/dashboard" element={<AdminDashboard />} />
                             <Route path="/privacy" element={<PrivacyPolicy />} />
                             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                             <Route path="*" element={<NotFound />} />
