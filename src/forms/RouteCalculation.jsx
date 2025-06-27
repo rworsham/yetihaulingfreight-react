@@ -119,7 +119,11 @@ const RouteCalculationForm = () => {
                         overflowY: 'auto',
                     }}
                 >
-                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+                    <Typography
+                        variant="h5"
+                        gutterBottom
+                        sx={{ color: theme.palette.accent1.main, fontWeight: 600 }}
+                    >
                         Calculate Route
                     </Typography>
 

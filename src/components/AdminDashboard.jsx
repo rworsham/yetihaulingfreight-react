@@ -14,6 +14,7 @@ import { AuthContext } from '../context/AuthContext.jsx';
 import { useAlert } from '../context/AlertContext.jsx';
 import RouteEstimateForm from "../forms/RouteEstimate.jsx";
 import RouteCalculationForm from "../forms/RouteCalculation.jsx";
+import AdminLinksForm from "../forms/AdminLinksForm.jsx";
 
 const AdminDashboard = () => {
     const theme = useTheme();
@@ -44,7 +45,7 @@ const AdminDashboard = () => {
     }
 
     return (
-        <Box sx={{ p: { xs: 2, md: 4 }, width: '100%' }}>
+        <Box sx={{ p: { xs: 2, md: 4 }, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
             <Box sx={{ textAlign: 'center', mb: 4 }}>
                 <Typography
                     variant={isSmallScreen ? 'h4' : 'h3'}
@@ -87,7 +88,7 @@ const AdminDashboard = () => {
                 }}
             />
 
-            <Grid container spacing={4}>
+            <Grid container spacing={4} justifyContent="center">
                 <Grid item xs={12} md={4}>
                     <Card
                         sx={{
@@ -146,6 +147,7 @@ const AdminDashboard = () => {
                             >
                                 Admin Links
                             </Typography>
+                            <AdminLinksForm />
                         </CardContent>
                     </Card>
                 </Grid>
