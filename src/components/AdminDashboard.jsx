@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import { AuthContext } from '../context/AuthContext.jsx';
 import { useAlert } from '../context/AlertContext.jsx';
+import RouteEstimateForm from "../forms/RouteEstimate.jsx";
+import RouteCalculationForm from "../forms/RouteCalculation.jsx";
 
 const AdminDashboard = () => {
     const theme = useTheme();
@@ -102,6 +104,7 @@ const AdminDashboard = () => {
                             >
                                 Route Estimate
                             </Typography>
+                            <RouteEstimateForm/>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -122,6 +125,7 @@ const AdminDashboard = () => {
                             >
                                 Route Calculation
                             </Typography>
+                            <RouteCalculationForm/>
                         </CardContent>
                     </Card>
                 </Grid>
