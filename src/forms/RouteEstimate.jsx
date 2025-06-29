@@ -10,9 +10,11 @@ import {
     FormLabel,
     useTheme,
     CircularProgress,
+    Paper,
+    Divider,
 } from '@mui/material';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import {adminApi, publicApi} from '../context/AuthContext.jsx';
+import { adminApi, publicApi } from '../context/AuthContext.jsx';
 import { useAlert } from '../context/AlertContext.jsx';
 
 const RouteEstimateForm = () => {
@@ -21,9 +23,9 @@ const RouteEstimateForm = () => {
     const { showError, showSuccess } = useAlert();
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
-
     const [pickupZip, setPickupZip] = useState('');
     const [deliveryZip, setDeliveryZip] = useState('');
+    const [estimateResult, setEstimateResult] = useState(null);
 
     const handleZipChange = (setter) => (e) => {
         const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 5);
@@ -37,6 +39,11 @@ const RouteEstimateForm = () => {
             return false;
         }
         return true;
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setEstimateResult(null);
     };
 
     const handleSubmit = async (e) => {
@@ -58,17 +65,17 @@ const RouteEstimateForm = () => {
             await publicApi.get('/auth/csrf-token');
             const token = await executeRecaptcha('route_estimate_form_submit');
 
-            await adminApi.post('/route/estimate', {
+            const response = await adminApi.post('/route/estimate', {
                 pickupZip,
                 deliveryZip,
                 captchaToken: token,
             });
 
-            showSuccess('Quote request submitted!');
-            setOpen(false);
+            setEstimateResult(response.data);
+            showSuccess('Route estimate retrieved!');
         } catch (error) {
             console.error(error);
-            showError('Failed to send message.');
+            showError('Failed to get route estimate.');
         } finally {
             setIsSubmitting(false);
         }
@@ -84,7 +91,7 @@ const RouteEstimateForm = () => {
                 Estimate Route
             </Button>
 
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal open={open} onClose={handleClose}>
                 <Box
                     sx={{
                         position: 'absolute',
@@ -136,6 +143,15 @@ const RouteEstimateForm = () => {
                             </Box>
                         )}
                     </FormGroup>
+
+                    {estimateResult && (
+                        <Paper elevation={3} sx={{ mt: 4, p: 3, backgroundColor: theme.palette.grey[100] }}>
+                            <Typography variant="h6" gutterBottom>Estimated Route</Typography>
+                            <Divider sx={{ mb: 2 }} />
+                            <Typography><strong>Distance:</strong> {estimateResult.distanceMiles.toFixed(2)} miles</Typography>
+                            <Typography><strong>Estimated Time:</strong> {estimateResult.formattedDuration}</Typography>
+                        </Paper>
+                    )}
                 </Box>
             </Modal>
         </>

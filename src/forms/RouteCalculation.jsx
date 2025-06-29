@@ -10,6 +10,8 @@ import {
     FormLabel,
     useTheme,
     CircularProgress,
+    Divider,
+    Paper,
 } from '@mui/material';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { adminApi, publicApi } from '../context/AuthContext.jsx';
@@ -21,6 +23,7 @@ const RouteCalculationForm = () => {
     const { showError, showSuccess } = useAlert();
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [routeResult, setRouteResult] = useState(null);
 
     const [pickup, setPickup] = useState({
         addressLine: '',
@@ -62,6 +65,11 @@ const RouteCalculationForm = () => {
         return true;
     };
 
+    const handleClose = () => {
+        setOpen(false);
+        setRouteResult(null);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -81,17 +89,23 @@ const RouteCalculationForm = () => {
             await publicApi.get('/auth/csrf-token');
             const token = await executeRecaptcha('route_form_submit');
 
-            await adminApi.post('/route/calculation', {
+            const response = await adminApi.post('/route/calculation', {
                 pickup,
                 delivery,
                 captchaToken: token,
             });
 
-            showSuccess('Quote request submitted!');
-            setOpen(false);
+            const result = response.data;
+            setRouteResult(result);
+
+            if (result.success) {
+                showSuccess('Route calculated!');
+            } else {
+                showError(result.message || 'Calculation failed.');
+            }
         } catch (error) {
             console.error(error);
-            showError('Failed to send message.');
+            showError('Failed to calculate route.');
         } finally {
             setIsSubmitting(false);
         }
@@ -103,7 +117,7 @@ const RouteCalculationForm = () => {
                 Calculate Route
             </Button>
 
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal open={open} onClose={handleClose}>
                 <Box
                     sx={{
                         position: 'absolute',
@@ -201,6 +215,22 @@ const RouteCalculationForm = () => {
                             </Box>
                         )}
                     </FormGroup>
+
+                    {routeResult && (
+                        <Paper elevation={3} sx={{ p: 3, mt: 4, backgroundColor: theme.palette.grey[100] }}>
+                            <Typography variant="h6" gutterBottom>Route Summary</Typography>
+                            <Divider sx={{ mb: 2 }} />
+                            <Typography><strong>Pickup Address:</strong> {routeResult.pickupAddress}</Typography>
+                            <Typography><strong>Delivery Address:</strong> {routeResult.deliveryAddress}</Typography>
+                            <Typography><strong>Distance:</strong> {routeResult.distanceInMiles.toFixed(2)} miles</Typography>
+                            <Typography><strong>Estimated Time:</strong> {routeResult.formattedTravelTime}</Typography>
+                            <Typography><strong>Estimated Cost:</strong> ${routeResult.estimatedCost.toFixed(2)}</Typography>
+                            <Typography><strong>Route Details:</strong> {routeResult.routeSummary}</Typography>
+                            {!routeResult.success && (
+                                <Typography color="error" sx={{ mt: 2 }}><strong>Error:</strong> {routeResult.message}</Typography>
+                            )}
+                        </Paper>
+                    )}
                 </Box>
             </Modal>
         </>
