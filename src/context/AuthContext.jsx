@@ -14,7 +14,9 @@ async function ensureCsrfToken() {
     const token = getCookie('XSRF-TOKEN');
     if (!token) {
         try {
-            await publicApi.get('/auth/csrf-token');
+            await axios.get('https://api.yetihaulingfreight.com/api/auth/csrf-token', {
+                withCredentials: true,
+            });
         } catch (err) {
             console.error('Failed to fetch CSRF token', err);
             throw err;
