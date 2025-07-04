@@ -116,6 +116,8 @@ const QuoteModal = ({ open, onClose }) => {
     return (
         <Modal open={open} onClose={onClose}>
             <Box
+                component="form"
+                onSubmit={handleSubmit}
                 sx={{
                     position: 'absolute',
                     top: '50%',
@@ -275,10 +277,10 @@ const QuoteModal = ({ open, onClose }) => {
                     </FormControl>
 
                     <Button
+                        type="submit"
                         variant="contained"
                         color="secondary"
                         fullWidth
-                        onClick={handleSubmit}
                         disabled={isSubmitting}
                     >
                         Submit Request

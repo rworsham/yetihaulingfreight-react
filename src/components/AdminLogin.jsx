@@ -89,6 +89,8 @@ const AdminLogin = () => {
             />
 
             <Box
+                component="form"
+                onSubmit={handleSubmit}
                 sx={{
                     width: '100%',
                     maxWidth: 400,
@@ -102,7 +104,7 @@ const AdminLogin = () => {
                     Admin Login
                 </Typography>
 
-                <FormGroup component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+                <FormGroup sx={{ width: '100%' }}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
                         <FormLabel htmlFor="username">Username</FormLabel>
                         <TextField

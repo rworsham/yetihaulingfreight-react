@@ -83,6 +83,8 @@ const ContactModal = ({ open, onClose }) => {
     return (
         <Modal open={open} onClose={onClose}>
             <Box
+                component="form"
+                onSubmit={handleSubmit}
                 sx={{
                     position: 'absolute',
                     top: '50%',
@@ -153,10 +155,10 @@ const ContactModal = ({ open, onClose }) => {
                     </FormControl>
 
                     <Button
+                        type="submit"
                         variant="contained"
                         color="secondary"
                         fullWidth
-                        onClick={handleSubmit}
                         disabled={isSubmitting}
                     >
                         Send Message

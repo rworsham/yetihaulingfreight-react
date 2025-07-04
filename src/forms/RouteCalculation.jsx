@@ -119,6 +119,8 @@ const RouteCalculationForm = () => {
 
             <Modal open={open} onClose={handleClose}>
                 <Box
+                    component="form"
+                    onSubmit={handleSubmit}
                     sx={{
                         position: 'absolute',
                         top: '50%',
@@ -199,10 +201,10 @@ const RouteCalculationForm = () => {
                         </FormControl>
 
                         <Button
+                            type="submit"
                             variant="contained"
                             color="primary"
                             fullWidth
-                            onClick={handleSubmit}
                             disabled={isSubmitting}
                         >
                             Submit Request
