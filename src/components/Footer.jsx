@@ -25,8 +25,8 @@ const Footer = () => {
                 onClick={() => setOpen(prev => !prev)}
                 sx={{
                     position: 'fixed',
-                    bottom: { xs: 50, sm: 32 },
-                    right: { xs: 24, sm: 32 },
+                    bottom: { xs: 90, sm: 24},
+                    right: { xs: 10, sm: 100 },
                     zIndex: 1300,
                 }}
             >

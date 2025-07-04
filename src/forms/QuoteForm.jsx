@@ -11,6 +11,7 @@ import {
     MenuItem,
     useTheme, CircularProgress,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { publicApi } from '../context/AuthContext.jsx';
 import { useAlert } from '../context/AlertContext.jsx';
@@ -81,10 +82,14 @@ const QuoteModal = ({ open, onClose }) => {
 
         setIsSubmitting(true);
 
-        if (!validateForm()) return;
+        if (!validateForm()) {
+            setIsSubmitting(false);
+            return;
+        }
 
         if (!executeRecaptcha) {
             showError('Recaptcha is not ready', 'error');
+            setIsSubmitting(false);
             return;
         }
         try {
@@ -132,6 +137,22 @@ const QuoteModal = ({ open, onClose }) => {
                     overflowY: 'auto',
                 }}
             >
+                <Button
+                    onClick={onClose}
+                    aria-label="Close"
+                    sx={{
+                        position: 'absolute',
+                        top: 8,
+                        right: 8,
+                        minWidth: 'auto',
+                        padding: '6px',
+                        color: theme.palette.grey[600],
+                        zIndex: 1
+                    }}
+                >
+                    <CloseIcon />
+                </Button>
+
                 <Typography
                     variant="h5"
                     gutterBottom

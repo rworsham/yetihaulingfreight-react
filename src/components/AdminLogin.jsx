@@ -37,14 +37,19 @@ const AdminLogin = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!validateForm()) return;
 
-        if (!executeRecaptcha) {
-            showError('Recaptcha is not ready', 'error');
+        setIsSubmitting(true);
+
+        if (!validateForm()) {
+            setIsSubmitting(false);
             return;
         }
 
-        setIsSubmitting(true);
+        if (!executeRecaptcha) {
+            showError('Recaptcha is not ready', 'error');
+            setIsSubmitting(false);
+            return;
+        }
 
         try {
             const token = await executeRecaptcha('admin_login_form_submit');

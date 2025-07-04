@@ -13,6 +13,7 @@ import {
     Divider,
     Paper,
 } from '@mui/material';
+import CloseIcon from "@mui/icons-material/Close";
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { adminApi, publicApi } from '../context/AuthContext.jsx';
 import { useAlert } from '../context/AlertContext.jsx';
@@ -135,6 +136,22 @@ const RouteCalculationForm = () => {
                         overflowY: 'auto',
                     }}
                 >
+                    <Button
+                        onClick={handleClose}
+                        aria-label="Close"
+                        sx={{
+                            position: 'absolute',
+                            top: 8,
+                            right: 8,
+                            minWidth: 'auto',
+                            padding: '6px',
+                            color: theme.palette.grey[600],
+                            zIndex: 1
+                        }}
+                    >
+                        <CloseIcon />
+                    </Button>
+
                     <Typography
                         variant="h5"
                         gutterBottom

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, useTheme } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer.jsx';
+import AlertHandler from "./AlertHandler.jsx";
 
 const Layout = () => {
     const theme = useTheme();
@@ -27,6 +28,7 @@ const Layout = () => {
                 <Outlet />
             </Box>
             <Footer />
+            <AlertHandler/>
         </Box>
     );
 };
