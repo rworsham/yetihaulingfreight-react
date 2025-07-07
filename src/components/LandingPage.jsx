@@ -114,7 +114,7 @@ const LandingPage = () => {
                         variant={isSmallScreen ? 'body2' : 'body1'}
                         sx={{ mb: 3, color: theme.palette.text.primary, fontWeight: 500 }}
                     >
-                        Serving your heavy haul needs with speed, safety, and precision.
+                        Serving your flatbed hauling needs with speed, safety, and precision.
                     </Typography>
                     <Button
                         variant="contained"
@@ -248,7 +248,7 @@ const LandingPage = () => {
                                 From bustling ports to remote job sites, Yeti Hauling covers the entire East Coast with
                                 unmatched reliability and dedication. Whether you're moving construction materials,
                                 oversized loads, or specialized equipment, our experienced team ensures your freight
-                                arrives safely and on schedule. Trust the cold-blooded pros for hotshot deliveries and
+                                arrives safely and on schedule. Trust the cold-blooded pros for flatbed deliveries and
                                 long hauls alike.
                             </Typography>
                         </Box>
@@ -336,7 +336,7 @@ const LandingPage = () => {
                 <Typography
                     sx={{ maxWidth: 600, mx: 'auto', color: theme.palette.text.primary, fontSize: { xs: '1rem', sm: '1.15rem', md: '1.25rem' }, }}
                 >
-                    We’re a family-owned flatbed trucking company specializing in heavy-duty hauling. With years of experience,
+                    We’re a family-owned flatbed trucking company specializing in flatbed hauling. With years of experience,
                     we provide safe and timely delivery of equipment, materials, and more throughout the East Coast.
                 </Typography>
             </Box>
