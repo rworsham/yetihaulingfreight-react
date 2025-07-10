@@ -165,7 +165,7 @@ const RouteEstimateForm = () => {
                     </FormGroup>
 
                     {estimateResult && (
-                        <Paper elevation={3} sx={{ mt: 4, p: 3, backgroundColor: theme.palette.grey[100] }}>
+                        <Paper elevation={3} sx={{ mt: 4, p: 3 }}>
                             <Typography variant="h6" gutterBottom>Estimated Route</Typography>
                             <Divider sx={{ mb: 2 }} />
                             <Typography><strong>Distance:</strong> {estimateResult.distanceMiles.toFixed(2)} miles</Typography>

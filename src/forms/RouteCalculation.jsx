@@ -236,7 +236,7 @@ const RouteCalculationForm = () => {
                     </FormGroup>
 
                     {routeResult && (
-                        <Paper elevation={3} sx={{ p: 3, mt: 4, backgroundColor: theme.palette.grey[100] }}>
+                        <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
                             <Typography variant="h6" gutterBottom>Route Summary</Typography>
                             <Divider sx={{ mb: 2 }} />
                             <Typography><strong>Pickup Address:</strong> {routeResult.pickupAddress}</Typography>
