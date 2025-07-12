@@ -170,6 +170,8 @@ const RouteEstimateForm = () => {
                             <Divider sx={{ mb: 2 }} />
                             <Typography><strong>Distance:</strong> {estimateResult.distanceMiles.toFixed(2)} miles</Typography>
                             <Typography><strong>Estimated Time:</strong> {estimateResult.formattedDuration}</Typography>
+                            <Typography><strong>Estimated Fuel Used:</strong> {estimateResult.estimatedFuelUsedGallons.toFixed(2)} gallons</Typography>
+                            <Typography><strong>Estimated Fuel Cost:</strong> ${estimateResult.estimatedFuelCost.toFixed(2)}</Typography>
                         </Paper>
                     )}
                 </Box>

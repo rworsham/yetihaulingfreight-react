@@ -244,6 +244,8 @@ const RouteCalculationForm = () => {
                             <Typography><strong>Distance:</strong> {routeResult.distanceInMiles.toFixed(2)} miles</Typography>
                             <Typography><strong>Estimated Time:</strong> {routeResult.formattedTravelTime}</Typography>
                             <Typography><strong>Estimated Cost:</strong> ${routeResult.estimatedCost.toFixed(2)}</Typography>
+                            <Typography><strong>Estimated Fuel Used:</strong> {routeResult.estimatedFuelUsedGallons.toFixed(2)} gallons</Typography>
+                            <Typography><strong>Estimated Fuel Cost:</strong> ${routeResult.estimatedFuelCost.toFixed(2)}</Typography>
                             <Typography><strong>Route Details:</strong> {routeResult.routeSummary}</Typography>
                             {!routeResult.success && (
                                 <Typography color="error" sx={{ mt: 2 }}><strong>Error:</strong> {routeResult.message}</Typography>
