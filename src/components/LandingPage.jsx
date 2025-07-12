@@ -288,24 +288,36 @@ const LandingPage = () => {
                     <Grid item xs={12} sm={6} md={4}>
                         <Card elevation={2}>
                             <CardContent>
-                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
-                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    “Fast, safe, and on time. Couldn't ask for better service.”
+                                </Typography>
+                                <Typography variant="caption" color="text.secondary">
+                                    – Jake R.
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4}>
                         <Card elevation={2}>
                             <CardContent>
-                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
-                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    “Professional drivers and solid equipment. Highly recommend.”
+                                </Typography>
+                                <Typography variant="caption" color="text.secondary">
+                                    – Marcus T.
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4}>
                         <Card elevation={2}>
                             <CardContent>
-                                <Typography variant="body1" gutterBottom>“Great service and reliable delivery!”</Typography>
-                                <Typography variant="caption" color="text.secondary">– Satisfied Customer</Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    “Super easy and Stress-free experience!”
+                                </Typography>
+                                <Typography variant="caption" color="text.secondary">
+                                    – Kyle M.
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
